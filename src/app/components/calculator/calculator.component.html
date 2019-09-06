@@ -1,0 +1,16 @@
+<div id='displayAll'>{{displayAll}}</div>
+<input  id="display"  style='text-align:right;' [(ngModel)]='numbers' placeholder="0"/>
+<div id="keyboard">
+  <div *ngFor="let number of keyboardNumbers;index as i;" (click)='setDisplayNumber(i)'>
+  {{number}}
+  </div>
+  <div id='decimal' (click)='setDecimal()'>.</div>
+  <div id='reset' (click)='reset()'>Reset</div>
+  <div id='back' (click)='back()'>←</div>
+  <div class='operators' (click)="setOperatorAndNumbers('+')">+</div>
+  <div class='operators' (click)="setOperatorAndNumbers('-')">-</div>
+  <div class='operators' (click)="setOperatorAndNumbers('*')">*</div>
+  <div class='operators' (click)="setOperatorAndNumbers('/')">/</div>
+  <div class='operators' (click)="resolveOperation()">=</div>
+</div>
+
