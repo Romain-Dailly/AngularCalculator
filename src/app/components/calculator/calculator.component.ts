@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.sass']
+  styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements OnInit {
 
@@ -73,9 +73,7 @@ export class CalculatorComponent implements OnInit {
   };
   // Delete last input number
   back(){
-    let newN = this.numbers.split('');
-    newN=newN.slice(0,-1);
-    this.numbers= newN.join('');
+    this.numbers= this.numbers.split('').slice(0,-1).join('');
   };
 
   ngOnInit() {

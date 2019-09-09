@@ -1,16 +1,36 @@
-<div id='displayAll'>{{displayAll}}</div>
-<input  id="display"  style='text-align:right;' [(ngModel)]='numbers' placeholder="0"/>
-<div id="keyboard">
-  <div *ngFor="let number of keyboardNumbers;index as i;" (click)='setDisplayNumber(i)'>
-  {{number}}
+<div id="page">
+  <div id='displayAll'>
+    <div id="displayAllInside">
+    {{displayAll}}
+    </div>
   </div>
-  <div id='decimal' (click)='setDecimal()'>.</div>
-  <div id='reset' (click)='reset()'>Reset</div>
-  <div id='back' (click)='back()'>←</div>
-  <div class='operators' (click)="setOperatorAndNumbers('+')">+</div>
-  <div class='operators' (click)="setOperatorAndNumbers('-')">-</div>
-  <div class='operators' (click)="setOperatorAndNumbers('*')">*</div>
-  <div class='operators' (click)="setOperatorAndNumbers('/')">/</div>
-  <div class='operators' (click)="resolveOperation()">=</div>
+  <div id="inputContainer">
+    <input  id="display"  style='text-align:right;' [(ngModel)]='numbers' placeholder="0"/>
+  </div>
+  <div id="keyboard">
+    <div id='numbersKeyboard'>
+      <button class='back' (click)='back()'>←</button>
+      <button class='reset' (click)='reset()'>C</button>
+      <button class='numbers'(click)='setDisplayNumber(7)'>7</button>
+      <button class='numbers'(click)='setDisplayNumber(8)'>8</button>
+      <button class='numbers'(click)='setDisplayNumber(9)'>9</button>
+      <button class='operators' (click)="setOperatorAndNumbers('-')">-</button>
+    <button class='numbers'(click)='setDisplayNumber(4)'>4</button>
+    <button class='numbers'(click)='setDisplayNumber(5)'>5</button>
+    <button class='numbers'(click)='setDisplayNumber(6)'>6</button>
+    <button class='operators' (click)="setOperatorAndNumbers('+')">+</button>
+    <button class='numbers'(click)='setDisplayNumber(1)'>1</button>
+    <button class='numbers'(click)='setDisplayNumber(2)'>2</button>
+    <button class='numbers'(click)='setDisplayNumber(3)'>3</button>
+    <button class='operators' (click)="setOperatorAndNumbers('*')">x</button>
+    <button class='numbers'(click)='setDisplayNumber(0)'>0</button>
+    <button class='numbers' (click)='setDecimal()'>.</button>
+    
+    <button class='operators' (click)="setOperatorAndNumbers('/')">/</button>
+    <button class='operators' (click)="resolveOperation()"><p>=</p></button>
+    
+  </div>
 </div>
+</div>
+
 
