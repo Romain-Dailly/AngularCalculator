@@ -10,19 +10,13 @@ export class CalculatorComponent implements OnInit {
   constructor() { };
 
   numbers:string='';
-  firstNumber:number=null;
-  secondNumber:number=null;
+  numbersInNumber:number=null;
   keyboardNumbers=[];
   operator:string='';
   result:number=null;
   displayAll:string='';
+  operation:string='';
 
-  //Set an array with 9 numbers
-  setkeyBoardNumbers(){
-    for (let i =0; i<10; i ++) {
-      this.keyboardNumbers = [...this.keyboardNumbers, i];
-    };
-  };
   // Set the numbers displayed in input
   setDisplayNumber(value) {
     this.result != null ?
@@ -36,47 +30,40 @@ export class CalculatorComponent implements OnInit {
   };
   // Store the displayed first value
   storeFirstNumber() {
-    this.firstNumber=Number(this.numbers);
+    this.numbersInNumber = Number(this.numbers);
     this.numbers='';
   };
   // Set the type of operator and call the method above
   setOperatorAndNumbers(operator:string){
-    this.operator = operator;
     this.storeFirstNumber();
-    this.firstNumber === this.result ?
-    this.displayAll +=' ' + operator :
-    this.displayAll += ` ${this.firstNumber} ${operator}`;
+    this.operation+= `${this.numbersInNumber}${operator}`;
+    this.numbersInNumber === this.result ?
+    this.displayAll += ` ${operator}`:
+    this.displayAll += ` ${this.numbersInNumber} ${operator}`;
   };
   // Get the second number and resolve operation, reset operator
   resolveOperation() {
-    this.secondNumber = Number(this.numbers);
-    this.operator === '+'?
-    this.result = this.firstNumber + this.secondNumber :
-    this.operator === '-' ?
-    this.result = this.firstNumber - this.secondNumber :
-    this.operator === '*' ?
-    this.result = this.firstNumber * this.secondNumber :
-    this.operator === '/' ?
-    this.result = this.firstNumber / this.secondNumber :
-    this.result = Number(this.numbers);
-    this.displayAll += ` ${this.secondNumber} = [${this.result}]`;
+    this.operation += `${Number(this.numbers)}`
+    this.result=Number(eval(this.operation));
+    this.displayAll += ` ${Number(this.numbers)} = [${this.result}]`;
     this.numbers= this.result.toString();
-    this.operator='';
+    console.log(this.operation);
+    this.operation='';
   };
   // Reset all values
   reset() {
     this.numbers = '';
     this.operator='';
-    this.firstNumber=null;
-    this.secondNumber=null;
+    this.numbersInNumber=null;
     this.displayAll = '';
+    this.operation='';
   };
   // Delete last input number
   back(){
+    Number(this.numbers)===this.result ? this.numbers = '':
     this.numbers= this.numbers.split('').slice(0,-1).join('');
   };
 
   ngOnInit() {
-    this.setkeyBoardNumbers();
   };
 };
