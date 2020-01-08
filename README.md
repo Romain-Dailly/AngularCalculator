@@ -1,5 +1,8 @@
 # AngularCalculator
 
+One-page project to discover angular and algorythms
+A calculator for long calculation operations.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
 
 ## Development server
